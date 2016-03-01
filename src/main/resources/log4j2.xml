@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+
+<!-- Document : log4j2.xml -->
+<!-- Created on : 04 Dec 2014 -->
+<!-- Author : LE SAUCE Julien -->
+<!-- Description : Set up the log4j 2.x properties -->
+<Configuration>
+	<!-- Specify the appenders of the application -->
+	<Appenders>
+		<!-- STD_ERR Appender (level >= warn) -->
+		<Console name="STD_ERR" target="SYSTEM_ERR">
+			<PatternLayout pattern="%-5p [%d{HH:mm:ss.SSS}] (%c{1}.%M) : %m%n" />
+			<Filters>
+				<ThresholdFilter level="warn" onMatch="accept"
+					onMismatch="deny" />
+			</Filters>
+		</Console>
+
+		<!-- STD_OUT Appender (trace <= level <= info) -->
+		<Console name="STD_OUT" target="SYSTEM_OUT">
+			<PatternLayout pattern="%-5p [%d{HH:mm:ss.SSS}] (%c{1}.%M) : %m%n" />
+			<Filters>
+				<!-- Accept levels >= TRACE -->
+				<ThresholdFilter level="trace" onMatch="acept"
+					onMismatch="accept" />
+				<!-- Deny levels >= than WARN -->
+				<ThresholdFilter level="fatal" onMatch="deny"
+					onMismatch="neutral" />
+				<ThresholdFilter level="error" onMatch="deny"
+					onMismatch="neutral" />
+				<ThresholdFilter level="warn" onMatch="deny"
+					onMismatch="neutral" />
+			</Filters>
+		</Console>
+
+		<!-- LOG FILE Appender (level >= debug) -->
+		<RollingFile name="LOG_FILE" fileName="logs/trace.log"
+			append="true" immediateFlush="true"
+			filePattern="logs/$${date:yyyy-MM-dd}/trace_%d{yyyy-MM-dd_HH'h'}.log">
+			<PatternLayout>
+				<Pattern>%-5p [%d{dd MMM yyyy HH:mm:ss.SSS}] (%c{1}.%M) : %m%n
+				</Pattern>
+			</PatternLayout>
+			<Filters>
+				<ThresholdFilter level="debug" onMatch="accept"
+					onMismatch="deny" />
+			</Filters>
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1"
+					modulate="true" />
+			</Policies>
+		</RollingFile>
+	</Appenders>
+
+	<!-- Specify the differents loggers of the application -->
+	<Loggers>
+		<!-- Root logger -->
+		<Root level="trace">
+			<AppenderRef ref="STD_ERR" />
+			<AppenderRef ref="STD_OUT" />
+			<AppenderRef ref="LOG_FILE" />
+		</Root>
+	</Loggers>
+</Configuration>

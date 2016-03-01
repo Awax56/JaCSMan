@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+
+<!-- Configuration Resources -->
+<configuration>
+	<properties fileName="gui/mainView.properties" config-name="mainView" throwExceptionOnMissing="true" />
+	<properties fileName="gui/clientView.properties" config-name="clientView" throwExceptionOnMissing="true" />
+	<properties fileName="gui/serverView.properties" config-name="serverView" throwExceptionOnMissing="true" />
+	
+	<properties fileName="application.properties" config-name="application" throwExceptionOnMissing="true" />
+</configuration>
