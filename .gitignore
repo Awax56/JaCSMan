@@ -20,6 +20,9 @@
 *.tar
 *.zip
 
+# Do not ignore /plugins directory
+!/plugins/*.jar
+
 # Logs and databases #
 ######################
 *.log
