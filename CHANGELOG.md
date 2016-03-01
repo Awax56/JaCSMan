@@ -20,6 +20,7 @@ Tags :
 ## [Unreleased]
 ### Fixed
 - Excluded /plugins/*.jar from .gitignore file
+- Fixed logger init in main class
 
 ## [1.0.0] - 2016-02-22
 ### Added

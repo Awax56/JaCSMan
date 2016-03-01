@@ -5,7 +5,7 @@
 	<!-- Project Description -->
 	<groupId>org.jls</groupId>
 	<artifactId>jacsman</artifactId>
-	<name>JaCSMan</name>
+	<name>Jacsman</name>
 	<version>1.0.0</version>
 	<packaging>jar</packaging>
 	<url>http://maven.apache.org</url>
@@ -15,6 +15,7 @@
 	<properties>
 		<jdk.version>1.8</jdk.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<mainClassName>${project.groupId}.${project.artifactId}.${project.name}</mainClassName>
 
 		<!-- Libraries Version -->
 		<junit.version>4.12</junit.version>
@@ -207,7 +208,7 @@
 							<addClasspath>true</addClasspath>
 							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
 							<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
-							<mainClass>${project.groupId}.${project.artifactId}.${project.name}</mainClass>
+							<mainClass>${mainClassName}</mainClass>
 						</manifest>
 						<manifestEntries>
 							<Class-Path>.</Class-Path>

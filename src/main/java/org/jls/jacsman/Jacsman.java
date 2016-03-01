@@ -24,6 +24,7 @@
 
 package org.jls.jacsman;
 
+import java.io.File;
 import java.lang.management.ManagementFactory;
 import java.lang.management.RuntimeMXBean;
 import java.net.URL;
@@ -58,7 +59,12 @@ public class Jacsman {
 		// If no configuration is configured
 		if (System.getProperty(log4jKey) == null) {
 			// Load the default configuration
-			URL url = Thread.currentThread().getContextClassLoader().getResource(ResourceManager.LOG4J_FILE);
+			String path = ResourceManager.LOG4J_FILE;
+			URL url = Thread.currentThread().getContextClassLoader().getResource(path);
+			if (url == null) {
+				path = ResourceManager.RESOURCES_DIR + File.separator + ResourceManager.LOG4J_FILE;
+				url = Thread.currentThread().getContextClassLoader().getResource(path);
+			}
 			System.setProperty(log4jKey, url.getFile());
 		}
 		final Logger logger = LogManager.getLogger();
@@ -111,13 +117,13 @@ public class Jacsman {
 	}
 
 	/**
-	 * Returns the list of the VM arguments.
+	 * Returns the JVM arguments as a list.
 	 * 
 	 * @param prefix
-	 *            Prefix to prints to the console before printing the argument.
+	 *            Prefix of each argument in the exported string.
 	 * @param suffix
-	 *            Suffix to prints to the console before printing the argument.
-	 * @return String containing the arguments of the Virtual Machine.
+	 *            Suffix of each argument in the exported string.
+	 * @return String containing the JVM arguments as a formatted list.
 	 */
 	private static String getVMArguments (String prefix, String suffix) {
 		RuntimeMXBean runtimeMxBean = ManagementFactory.getRuntimeMXBean();
@@ -133,15 +139,15 @@ public class Jacsman {
 	}
 
 	/**
-	 * Returns the list of the application arguments.
+	 * Returns the application arguments as a list.
 	 * 
 	 * @param prefix
-	 *            Prefix to prints to the console before printing the argument.
+	 *            Prefix of each argument in the exported string.
 	 * @param suffix
-	 *            Suffix to prints to the console before printing the argument.
+	 *            Suffix of each argument in the exported string.
 	 * @param args
-	 *            Arguments specified to the application.
-	 * @return String containing the arguments of the application.
+	 *            Arguments given to the application.
+	 * @return String containing the application arguments as a formatted list.
 	 */
 	private static String formatMainArguments (String prefix, String suffix, String[] args) {
 		if (args.length > 0) {

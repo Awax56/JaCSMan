@@ -3,9 +3,8 @@
 
 <!-- Configuration Resources -->
 <configuration>
-	<properties fileName="gui/mainView.properties" config-name="mainView" throwExceptionOnMissing="true" />
-	<properties fileName="gui/clientView.properties" config-name="clientView" throwExceptionOnMissing="true" />
-	<properties fileName="gui/serverView.properties" config-name="serverView" throwExceptionOnMissing="true" />
-	
 	<properties fileName="application.properties" config-name="application" throwExceptionOnMissing="true" />
+	<properties fileName="mainView.properties" config-name="mainView" throwExceptionOnMissing="true" />
+	<properties fileName="clientView.properties" config-name="clientView" throwExceptionOnMissing="true" />
+	<properties fileName="serverView.properties" config-name="serverView" throwExceptionOnMissing="true" />
 </configuration>
