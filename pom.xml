@@ -22,7 +22,7 @@
 		<log4j.version>[2.13.2,)</log4j.version>
 		<commons-configuration.version>1.10</commons-configuration.version>
 		<commons-collections.version>3.2.2</commons-collections.version>
-		<commons-io.version>2.4</commons-io.version>
+		<commons-io.version>2.7</commons-io.version>
 		<commons-beanutils.version>[1.9.2,)</commons-beanutils.version>
 		<jdom.version>2.0.6</jdom.version>
 		<miglayout.version>3.7.4</miglayout.version>
